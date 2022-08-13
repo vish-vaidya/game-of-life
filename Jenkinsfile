@@ -10,14 +10,13 @@
 
     stages {
         stage('compile') {
-            steps {
-	          sh 'mvn clean'
-                sh 'mvn compile'
+		steps {
+                sh 'mvn install'
             }
         }
-        stage('test ') {
+        stage('deploy') {
             steps {
-                sh 'mvn test'
+                sh 'cp -r /mnt/vishwesh/gameoflife-web/target/gameoflife.war /mnt/web-server/apache-tomcat-9.0.65/webapps'
             }
         }
 
