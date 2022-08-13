@@ -1,7 +1,12 @@
 
     pipeline {
 
-    agent any
+    agent {
+    label{
+		label "built-in"
+		customWorkspace "/mnt/vishwesh"
+}
+}
 
     stages {
         stage('compile') {
