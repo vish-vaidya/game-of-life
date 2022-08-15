@@ -1,25 +1,24 @@
+pipeline {
 
-    pipeline {
+agent any
+	
+	stages{
+		
+		stage ('installing and compile') {
+			
+				agent {
+		node {
+				label "master"
+				customWorkspace "/mnt/docker"
+		}
+		
+		}
+			
+			steps {
+			sh 'mvn install'
+			
+			}
+		}
+	}
 
-    agent {
-    label{
-		label "built-in"
-		customWorkspace "/mnt/vishwesh"
-}
-}
-
-    stages {
-        stage('compile') {
-		steps {
-                sh 'mvn install'
-            }
-        }
-        stage('deploy') {
-            steps {
-                sh 'cp -r /mnt/vishwesh/gameoflife-web/target/gameoflife.war /mnt/web-server/apache-tomcat-9.0.65/webapps'
-            }
-        }
-
-
-    }
 }
