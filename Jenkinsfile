@@ -22,15 +22,6 @@ agent any
 		
 		
 		stage ('docker container') {
-			
-						agent {
-		node {
-				label "master"
-				customWorkspace "/mnt/container"
-		}
-		
-		}
-		
 			steps {
 			
 			sh label: '' , script: '''rm -rf dockerimg
