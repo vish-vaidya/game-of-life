@@ -1,5 +1,8 @@
-FROM tomcat
+FROM tomcat:8-jre8
 
-MAINTAINER "THEVISH"
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY /mnt/node1/gameoflife.war /usr/local/tomcat/webapps/gameoflife.war
+COPY target/gameoflife.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
