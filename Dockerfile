@@ -1,4 +1,4 @@
-FROM tomcat:8-jre8
-COPY target/gameoflife.war /usr/local/tomcat/webapps/
+FROM tomcat:8.5.47-jdk8-openjdk
+COPY /mnt/Dev/game-of-life/gameoflife-web/target/gameoflife.war /usr/local/tomcat/webapps
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD ["/usr/local/tomcat/bin/catalina.sh","run"]
