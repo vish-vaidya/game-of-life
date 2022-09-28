@@ -32,12 +32,13 @@ stages {
    touch dockerfile
    cat <<EOT>>dockerfile
    FROM tomcat:8.5.47-jdk8-openjdk
-   COPY ./gameoflife.war /usr/local/tomcat/webapps
+   ADD ./gameoflife.war /usr/local/tomcat/webapps/
    EXPOSE 8080
    CMD ["/usr/local/tomcat/bin/catalina.sh","run"]
    EOT
+   
    sudo docker build -t webimage:$BUILD_NUMBER .
-   sudo docker container run -itdp 8888:8080 webimage:$BUILD_NUMBER'''
+   sudo docker run -itdp 8888:8080 webimage:$BUILD_NUMBER'''
    }
    }
    }
